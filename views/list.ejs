@@ -1,0 +1,21 @@
+<%- include("header") %> 
+    <div class="box" id="heading">
+        <h1><%=currentTitle%></h1>
+    </div>
+    <div class="box">
+        <%for(i=0;i<newItems.length;i++){%>
+        <form method="POST" action="/delete">
+            <div class="item">
+                <input type="checkbox" name="checkbox" value=<%= newItems[i]._id %>  onchange="this.form.submit()">
+                <p><%=newItems[i].name%></p>
+            </div>
+            <input type="hidden" value=<%= currentTitle %> name="listName"> 
+        </form>
+        <%}%>
+        <form class="item" action="/" method="POST">
+            <input type="text" name="task" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="submit" value=<%= currentTitle %> >+</button>
+        </form>
+    </div>
+<%- include("footer") %> 
+        
